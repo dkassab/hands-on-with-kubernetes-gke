@@ -9,8 +9,7 @@ The following repository will help you create a Kubernetes cluster running on Go
 2. Click link to navigate in the Google Cloud Console to API Manager > Library https://console.cloud.google.com/apis/library. Enable the Compute Engine and Container Engine API: 
 ![Compute and Container Engine](http://i.imgur.com/obCh0lP.png)
 ![Enable APIs](http://i.imgur.com/BThkhfK.png)
-3. Download Google SDK for Mac, Linux or Windows: https://cloud.google.com/sdk/ The SDK is used to run commands in PowerShell (Windows) or the Mac OS X terminal. 
-4. Clone of this repo to upload applications
+3. Download Google SDK for Mac, Linux or Windows: https://cloud.google.com/sdk/. During this workshop we will use the Google Cloud shell but in everyday usage you would use the SDK to run commands in PowerShell (Windows) or the Mac OS X terminal. 
 
 ## Course Documents
 
@@ -30,25 +29,38 @@ The presenter will go through a list of demos during the workshop.
 
 Find the demos [here](docs/demos)
 
-## Destroying Cluster After Training
+## Fill Out Survey For Kubernetes Water Bottle! 
+
+We really enjoy your feedback! 
+
+Find the survey [here](https://docs.google.com/forms/d/e/1FAIpQLSfesQXqJOdKcZt3SsT2_itM4DmzRW9w5KEyKbBybA8puSCIjQ/viewform)
+
+![waterbottle](http://i.imgur.com/TvNt5QK.jpg)
+
+## Destroying Cluster and Load Balancers After Training
 
 Congrats on finishing the hands on introduction to Kubernetes!
 
 To remove the Kubernetes cluster and underlying infrastructure execute the following from your local machine.
 
 ```
-$ gcloud container clusters delete [NAME OF CLUSTER] --zone "[ZONE]"
+gcloud container clusters delete [NAME OF CLUSTER] --zone "[ZONE]"
 ```
 If you used the standard command in this workshop to start the cluster than copy and paste the following:
 
 ```
-$ gcloud container clusters delete k8strainingcluster --zone "us-west1-a"
+gcloud container clusters delete k8sintelgoogle \
+--zone "us-east1-c"
 ```
+Navigate to the network section in the Google Cloud Portal and delete the load balancers that were created https://console.cloud.google.com/networking/loadbalancing/loadBalancers/ 
+
 You will still have roughly $300 in Google Cloud credits you can use to test out Kubernetes more.
 
 ## Reference
 
 Kubernetes vs. Mesos Marathon vs. Docker Swarm vs. Cloud Foundry SWOT analysis found [here](https://apprenda.com/white-papers/container-orchestration-comparison-guide/)
+
+Google Cloud Podcast with John Wilkes, one of the engineers from Google who originally developed their internal container orchestration system - Borg [here](https://www.gcppodcast.com/post/episode-46-borg-and-k8s-with-john-wilkes/)
 
 Learn Why CTO's and Developers are Choosing Kubernetes [here](https://apprenda.com/why-kubernetes/)
 
@@ -61,6 +73,9 @@ The Google SDK Container commands are found [here](https://cloud.google.com/sdk/
 
 ## Brought To You By
 
+![Apprenda](https://upload.wikimedia.org/wikipedia/commons/c/cc/Apprenda_logo.png)
+
+![Intel](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/320px-Intel-logo.svg.png)
+
 ![Google Cloud Platform](https://cloud.google.com/_static/1c93cfc82f/images/cloud/gcp-logo.svg)
 
-![Apprenda](https://upload.wikimedia.org/wikipedia/commons/c/cc/Apprenda_logo.png)
