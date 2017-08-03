@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: kdemo
-        image: ikester/kdemo:v1
+        image: apprenda/kdemo:v1
         resources:
           requests:
             cpu: 100m

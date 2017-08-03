@@ -11,7 +11,7 @@ These steps are to be executed from your local machine!
 ## 1. Navigate to the repository directory on your machine.  
 
 ```
-$ cd /[LOCATION YOU CLONED THIS REPO]/GKE-hands-on-training
+$ cd /[LOCATION WHERE YOU CLONED THIS REPO]
 ```
 
 ## 2. Execute the Kubernetes deployment first
@@ -23,12 +23,12 @@ $ kubectl apply -f examples/rolling-deployment/deployment-v1.0.yaml
 ## 3. Display the pods
 
 ```
-$ kubectl get deployments k8s-workshop-site
+$ kubectl get deployments kdemo-dep
 ```
 Decribe the deployment
 
 ```
-$ kubectl describe deployments k8s-workshop-site
+$ kubectl describe deployments kdemo-dep
 ```
 See all the pods running on the cluster
 
@@ -39,20 +39,20 @@ $ kubectl get pods -o wide
 ## 4. Create a Services with an external endpoint that we can access
 
 ```
-$ kubectl expose deployment k8s-workshop-site --type=LoadBalancer --name=k8s-workshop-site-dev
+$ kubectl expose deployment kdemo-dep --type=LoadBalancer --name=kdemo-svc
 ```
 Find the port and external IP
 
 ```
-$ kubectl get services k8s-workshop-site-dev
+$ kubectl get services kdemo-svc
 ```
 
-You should now be seeing:
+You should now be seeing something like this:
 
 ```
 root@bootstrap-node:~/hands-on-with-kubernetes-workshop# kubectl get services
 NAME                CLUSTER-IP       EXTERNAL-IP            PORT(S)        AGE
-k8s-workshop-site   172.17.149.128   104.196.252.72         80:32233/TCP   13s
+kdemo-svc           172.17.149.128   104.196.252.72         80:32233/TCP   13s
 ```
 
 Navigate to the external-ip address with the port (104.196.252.72:80 in this example).
@@ -90,7 +90,7 @@ Refresh the site in the browser. You should see version 1.1.
 Delete the Service
 
 ```
-kubectl delete services k8s-workshop-site-dev
+kubectl delete services kdemo-svc
 ```
 
 Finally delete the deployment
