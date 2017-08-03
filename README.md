@@ -29,7 +29,7 @@ The presenter will go through a list of demos during the workshop.
 
 Find the demos [here](docs/demos)
 
-## Fill Out Survey For Kubernetes Water Bottle! 
+## Fill Out Survey! 
 
 We really enjoy your feedback! 
 
