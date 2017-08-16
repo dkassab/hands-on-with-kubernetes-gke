@@ -26,7 +26,7 @@ List all the projects on Google Cloud to make sure everything is working and you
 gcloud projects list
 ```
 
-If you used Google Cloud before you may have more than one project. Make sure you change to your preferred project. If you never used Google Cloud before you can skip this command` line.
+If you used Google Cloud before you may have more than one project. Make sure you change to your preferred project. If you never used Google Cloud before you can skip this command.
 
 ```
 gcloud config set project [PROJECT_ID]
