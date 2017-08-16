@@ -9,15 +9,15 @@ The following repository will help you create a Kubernetes cluster running on Go
 2. Click link to navigate in the Google Cloud Console to API Manager > Library https://console.cloud.google.com/apis/library. Enable the Compute Engine and Container Engine API: 
 ![Compute and Container Engine](http://i.imgur.com/obCh0lP.png)
 ![Enable APIs](http://i.imgur.com/BThkhfK.png)
-3. Download Google SDK for Mac, Linux or Windows: https://cloud.google.com/sdk/. During this workshop we will use the Google Cloud shell but in everyday usage you would use the SDK to run commands in PowerShell (Windows) or the Mac OS X terminal. 
+3. For this workshop we will use the Google Cloud Shell but you might want to consider installing the Google Cloud SDK later (available for Mac, Linux or Windows): https://cloud.google.com/sdk/ for a local command-line client. 
 
 ## Course Documents
 
 Join the course's Slack:
 
- [![Slackin](http://54.242.94.98/badge.svg)](http://54.242.94.98/)
+ [![Kismatic Slack Signup](http://54.242.94.98/badge.svg)](http://54.242.94.98/)
 
-You will find the presentation, links, commands and group questions pinned in the _#k8satgoogle_ channel
+You will find the presentation, links, commands and group questions pinned in the _#k8straining_ channel
 
 ## Create Infrastructure & Provision Cluster
 
@@ -33,26 +33,21 @@ Find the demos [here](docs/demos)
 
 We really enjoy your feedback! 
 
-Find the survey [here](https://docs.google.com/forms/d/e/1FAIpQLSfesQXqJOdKcZt3SsT2_itM4DmzRW9w5KEyKbBybA8puSCIjQ/viewform)
+Find the survey [here](https://goo.gl/forms/xleficwP525Y7nXY2)
 
 ## Destroying Cluster and Load Balancers After Training
 
 Congrats on finishing the hands on introduction to Kubernetes!
 
-To remove the Kubernetes cluster and underlying infrastructure execute the following from your local machine.
+To remove the Kubernetes cluster and underlying infrastructure execute the following from the Google Cloud Shell
 
 ```
-gcloud container clusters delete [NAME OF CLUSTER] --zone "[ZONE]"
+gcloud container clusters delete k8sworkshop --zone=us-east1-c
 ```
-If you used the standard command in this workshop to start the cluster than copy and paste the following:
 
-```
-gcloud container clusters delete k8sintelgoogle \
---zone "us-east1-c"
-```
 Navigate to the network section in the Google Cloud Portal and delete the load balancers that were created https://console.cloud.google.com/networking/loadbalancing/loadBalancers/ 
 
-You will still have roughly $300 in Google Cloud credits you can use to test out Kubernetes more.
+You will still have roughly $300 in Google Cloud credits that you can use to play around with Kubernetes some more!
 
 ## Reference
 
@@ -62,7 +57,7 @@ Google Cloud Podcast with John Wilkes, one of the engineers from Google who orig
 
 Learn Why CTO's and Developers are Choosing Kubernetes [here](https://apprenda.com/why-kubernetes/)
 
-Join the Kubernetes community [here](https://github.com/chrisgaun/GKE-hands-on-training/blob/master/community.md)
+Join the Kubernetes community [here](https://github.com/apprenda/hands-on-with-kubernetes-gke/blob/master/community.md)
 
 The Google SDK Container commands are found [here](https://cloud.google.com/sdk/gcloud/reference/container/)
 
@@ -72,8 +67,6 @@ The Google SDK Container commands are found [here](https://cloud.google.com/sdk/
 ## Brought To You By
 
 ![Apprenda](https://upload.wikimedia.org/wikipedia/commons/c/cc/Apprenda_logo.png)
-
-![Intel](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Intel-logo.svg/320px-Intel-logo.svg.png)
 
 ![Google Cloud Platform](https://cloud.google.com/_static/1c93cfc82f/images/cloud/gcp-logo.svg)
 

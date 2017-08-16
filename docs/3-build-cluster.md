@@ -1,113 +1,122 @@
 # Build the Kubernetes Cluster
-In the following section, there are commands highlighted in grey. You will copy and paste the commands into the Google CLoud Shell command prompt - $. The actual $ symbol is disregarded to make it easy to cut and paste. 
-```
-$
-```
+
+In this section, you will find code blocks with commands  for you to copy & paste into the Google Cloud Shell (remote terminal window). We have excluded the command prompt itself (the dollar sign `$`) from the snippets. 
+
 **Tips for those who have not used a command line in ages**
 
-It may take few minutes for a command prompt to respond. However, if it ever gets stuck you can use "ctrl+c" to get back to the command line. 
+It may take few minutes for a command prompt to respond. However, if it ever gets stuck you can use `Ctrl+C` to interrupt the current command and get back to the command prompt. 
 
-You can use the up arrow to find previous entered commands. 
+You can use the `Up Arrow` to navigate to previous commands in the command history. 
 
-To copy from the command line, simply highlight (no ctrl+c !) 
+To copy from the terminal window, simply highlight the desired text and it will be auto-copied. You can then use paste it as usual.
 
-## 1. Sign into Google Cloud
+## 1. Sign In To Google Cloud
 
 Navigate to the Google Cloud portal: https://console.cloud.google.com/ 
 
-For this workshop we will use the web-based command line, Google Cloud Shell, to eliminate differences in laptop images. 
+For this workshop we will use the web-based terminal window, Google Cloud Shell, to avoid differences between operating systems and personal configurations. 
 
 Open the Google Cloud Shell
 
 ![Cloud Shell](https://image.ibb.co/ccoxLF/cloudshell.png)
 
-List all the projects on Google Cloud to make sure everything is working and you're in the right place. 
+List all the projects on Google Cloud to make sure everything is working and you're in the right place.
+
 ```
 gcloud projects list
 ```
-Set default zone in Google Cloud for the workshop
-```
-gcloud config set compute/zone us-east1-c
-```
+
 If you used Google Cloud before you may have more than one project. Make sure you change to your preferred project. If you never used Google Cloud before you can skip this command` line.
+
 ```
 gcloud config set project [PROJECT_ID]
 ```
-## 2. Clone Github
 
-Clone this Github repo to the Cloud Shell so that you have all demo applications
+Set default zone in Google Cloud for the workshop
 
 ```
-git clone https://github.com/chrisgaun/hands-on-with-kubernetes-gke 
+gcloud config set compute/zone us-east1-c
 ```
 
-Now type "ls" into the command line. You should see the "hands-on-with-kubernetes-gke" repo. 
+## 2. Clone the Workshop Git Repository
 
-Change the directory to the cloned repo
+Clone the following GitHub repo into the Cloud Shell to get local access to the workshop demo files
+
+```
+git clone https://github.com/apprenda/hands-on-with-kubernetes-gke 
+```
+
+If you type `ls` into the command line you should see a new `hands-on-with-kubernetes-gke` directory. 
+
+Change into the workshop directory you just cloned
 
 ```
 cd hands-on-with-kubernetes-gke
 ```
 
-## 3. Provision Cluster
+## 3. Provision a Cluster
 
-Run the command to create a 3-node cluster on Google cloud. This may take a minute to respond and will need to run for several minutes. It is a good time for a bathroom break.  
+Run the following command to create a 3-node Kubernetes cluster in Google Container Engine (GKE). This may take a minute to respond and will run for several minutes while the cluster is provisioned.
 
 ```
-gcloud container clusters create "k8sintelgoogle" \
+gcloud container clusters create "k8sworkshop" \
   --zone "us-east1-c" \
   --machine-type "n1-standard-1" \
   --image-type "GCI" --disk-size "100" \
   --scopes cloud-platform \
   --num-nodes "3"
 ``` 
+
 When the command is finishing executing, you will see output like this
 ![Imgur](http://i.imgur.com/zAMyyez.png)
 
-You should also navigate to the Google Container Engine section of the Google Cloud Portal https://console.cloud.google.com/kubernetes/list You should see the your newly created Kubernetes cluster.
+You can navigate to the Container Engine section of the Google Cloud Portal https://console.cloud.google.com/kubernetes/list. You should see your newly created Kubernetes cluster listed there.
 
-Now navigate to the Google compute section and you will see the virtual machines that are hosting the Kubernetes fabric https://console.cloud.google.com/compute/instances  
+You can also navigate to the Compute Engine section to see the three virtual machines that were provisioned to power the new Kubernetes cluster https://console.cloud.google.com/compute/instances  
 
-## 4. Connect with Cluster
+## 4. Connect To The Cluster
 
-Make sure kubectl is up to date
+Make sure the Kubernetes command-line client (`kubectl`) is up to date
 
 ```
 gcloud components install kubectl
 ```
 
-Configure kubectl with the training cluster context. 
+Configure `kubectl` with the workshop cluster context/credentials 
 
 ```
-gcloud container clusters get-credentials k8sintelgoogle \
---zone us-east1-c 
+gcloud container clusters get-credentials k8sworkshop
 ```
 
-Verify kubectl can connect to the cluster
+Now verify that `kubectl` can connect to the cluster
 
 ```
 kubectl cluster-info
 ```
 
-Since we are using the public cloud command line (essentially a VM in Google Cloud) we need to modify the Kubernetes Dashboard UI service and expose it to the internet
+Since we are in the Cloud Shell (essentially a VM in Google Cloud) we need to modify the Kubernetes Dashboard UI Service to expose it to the Internet
 
 ```
 kubectl get svc kubernetes-dashboard -n kube-system -o yaml | \
 sed "s/ClusterIP/LoadBalancer/" | \
 kubectl apply -f - -n kube-system
 ```
-Get the IP of the Dashboard
+
+Get the IP address of the Dashboard
 
 ```
-kubectl get svc kubernetes-dashboard -n kube-system -w
+kubectl get svc kubernetes-dashboard -n kube-system
 ```
-Grab the external IP address from the highlighted below and paste it into your prefered browser (your IP will be different from one below) 
+
+The `EXTERNAL-IP` column may show `<pending>` for a short while while the Google Load Balancer is configured. You can simply use the `Up Arrow` to show the previous command and run it again until you see an IP address has been allocated.
+
+Grab the `EXTERNAL-IP` address (sample highlighted below) and paste it into a new browser tab or window (your IP will be different from one shown below) 
 
 ![IP Address](http://i.imgur.com/i1hlPV2.png)
 
 ## 5. Run "Hello World"
 
-In the command line, deploy "hello world" application to get something up and running on your new cluster
+Deploy a "Hello, World!" application to get something up and running on your new cluster
 
 ```
 kubectl run hello-world \
@@ -115,7 +124,8 @@ kubectl run hello-world \
 --image=gcr.io/google-samples/node-hello:1.0  \
 --port=8080
 ```
-Navigate to the "pods" section in the Kubernetes Dashboard you just opened up in the browser window. You should see "pods" being created. 
+
+Navigate to the "Workloads" section in the Kubernetes Dashboard you previously opened and you should see the new Deployment, ReplicaSet and Pods being created
 
 ![Imgur](http://i.imgur.com/j8oVACv.png)
 
@@ -123,4 +133,4 @@ Navigate to the "pods" section in the Kubernetes Dashboard you just opened up in
 
 Instructor will give a tour of the Kubernetes Dashboard and cover the constructs of Kubernetes. 
 
-They will then cover the demo apps found here https://github.com/chrisgaun/hands-on-with-kubernetes-gke/blob/master/docs/demos 
+They will then cover the demo apps found here https://github.com/apprenda/hands-on-with-kubernetes-gke/tree/master/docs/demos

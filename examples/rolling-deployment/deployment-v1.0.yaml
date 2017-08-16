@@ -5,16 +5,15 @@ metadata:
 spec:
   replicas: 3
   strategy:
+    type: RollingUpdate
     rollingUpdate:
       maxSurge: 1
       maxUnavailable: 1
-    type: RollingUpdate
   minReadySeconds: 30
   template:
     metadata:
       labels:
         name: kdemo
-        visualize: 'true'
     spec:
       containers:
       - name: kdemo

@@ -14,7 +14,6 @@ spec:
     metadata:
       labels:
         name: kdemo
-        visualize: 'true'
     spec:
       containers:
       - name: kdemo
