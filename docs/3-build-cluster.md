@@ -56,7 +56,7 @@ cd hands-on-with-kubernetes-gke
 
 ## 3. Provision a Cluster
 
-Run the following command to create a 3-node Kubernetes cluster in Google Container Engine (GKE). Make sure to update the zone based on what you set up for the project above. This may take a minute to respond and will run for several minutes while the cluster is provisioned.
+Run the following command to create a 2-node Kubernetes cluster in Google Container Engine (GKE). Make sure to update the zone based on what you set up for the project above. Also, make sure to attach a random number or your credentials to the cluster name if you are using our shared training environment. This may take a minute to respond and will run for several minutes while the cluster is provisioned.
 
 ```
 gcloud container clusters create "k8sworkshop" \
