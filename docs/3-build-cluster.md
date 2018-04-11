@@ -143,7 +143,7 @@ Instructor will give a tour of the Kubernetes Dashboard and cover the constructs
 ## 7. Delete the HelloWorld Deployment
 Let's delete the hello world deployment:
 
-```kubectl delete deploymnet hello-world```
+```kubectl delete deployment hello-world```
 
 We will then cover the demo apps found here https://github.com/apprenda/hands-on-with-kubernetes-gke/tree/master/docs/demos
 
