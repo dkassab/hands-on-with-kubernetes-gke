@@ -114,6 +114,13 @@ Grab the `EXTERNAL-IP` address (sample highlighted below) and paste it into a ne
 
 ![IP Address](http://i.imgur.com/i1hlPV2.png)
 
+Get the token access for the Dashboard
+
+```
+kubectl config view | grep -A10 "name: $(kubectl config current-context)" | awk '$1=="access-token:"{print $2}'
+```
+You need to provide this token to get authorized to access the dashboard.
+
 ## 5. Run "Hello World"
 
 Deploy a "Hello, World!" application to get something up and running on your new cluster
