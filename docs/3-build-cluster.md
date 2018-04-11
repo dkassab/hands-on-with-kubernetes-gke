@@ -64,7 +64,7 @@ gcloud container clusters create "k8sworkshop" \
   --machine-type "n1-standard-1" \
   --image-type "GCI" --disk-size "50" \
   --scopes cloud-platform \
-  --num-nodes "1"
+  --num-nodes "2"
 ``` 
 
 When the command is finishing executing, you will see output like this
@@ -127,7 +127,7 @@ Deploy a "Hello, World!" application to get something up and running on your new
 
 ```
 kubectl run hello-world \
---replicas=5 --labels="run=load-balancer-example" \
+--replicas=3 --labels="run=load-balancer-example" \
 --image=gcr.io/google-samples/node-hello:1.0  \
 --port=8080
 ```
