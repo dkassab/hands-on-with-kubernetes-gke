@@ -140,4 +140,10 @@ Navigate to the "Workloads" section in the Kubernetes Dashboard you previously o
 
 Instructor will give a tour of the Kubernetes Dashboard and cover the constructs of Kubernetes. 
 
-They will then cover the demo apps found here https://github.com/apprenda/hands-on-with-kubernetes-gke/tree/master/docs/demos
+## 7. Delete the HelloWorld Deployment
+Let's delete the hello world deployment:
+
+```kubectl delete deploymnet hello-world```
+
+We will then cover the demo apps found here https://github.com/apprenda/hands-on-with-kubernetes-gke/tree/master/docs/demos
+
