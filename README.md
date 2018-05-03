@@ -6,18 +6,9 @@ The following repository will help you create a Kubernetes cluster running on Go
     1. FREE TRIAL: $300 of Google Cloud for 12 months https://cloud.google.com/free/
     2. FREE KUBERNETES TIER: up to 5 nodes of Google Container Engine (GKE) are free. Note the underlining Google Compute Engine counts towards the $300 from the FREE TRIAL. 
     3. Keep the Google Cloud console open once you signed up: https://console.cloud.google.com/ 
-2. Click link to navigate in the Google Cloud Console to API Manager > Library https://console.cloud.google.com/apis/library. Enable the Compute Engine and Container Engine API: 
-![Compute and Container Engine](http://i.imgur.com/obCh0lP.png)
-![Enable APIs](http://i.imgur.com/BThkhfK.png)
+2. Click link to navigate in the Google Cloud Console to API Manager > Library https://console.cloud.google.com/apis/library. Enable the Compute Engine and Container Engine API
 3. For this workshop we will use the Google Cloud Shell but you might want to consider installing the Google Cloud SDK later (available for Mac, Linux or Windows): https://cloud.google.com/sdk/ for a local command-line client. 
 
-## Course Documents
-
-Join the course's Slack:
-
- [![Kismatic Slack Signup](http://54.242.94.98/badge.svg)](http://54.242.94.98/)
-
-You will find the presentation, links, commands and group questions pinned in the _#k8straining_ channel
 
 ## Create Infrastructure & Provision Cluster
 
