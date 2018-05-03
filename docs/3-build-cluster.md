@@ -62,9 +62,9 @@ Run the following command to create a 2-node Kubernetes cluster in Google Contai
 gcloud container clusters create "k8sworkshop" \
   --zone "us-east1-c" \
   --machine-type "n1-standard-1" \
-  --image-type "GCI" --disk-size "50" \
+  --image-type "GCI" --disk-size "100" \
   --scopes cloud-platform \
-  --num-nodes "2"
+  --num-nodes "3"
 ``` 
 
 When the command is finishing executing, you will see output like this
