@@ -117,7 +117,7 @@ Grab the `EXTERNAL-IP` address (sample highlighted below) and paste it into a ne
 Get the token access for the Dashboard
 
 ```
-kubectl config view | grep -A10 "name: $(kubectl config current-context)" | awk '$1=="access-token:"{print $2}'
+gcloud config config-helper --format=json | jq .credential.access_token
 ```
 You need to provide this token to get authorized to access the dashboard.
 
